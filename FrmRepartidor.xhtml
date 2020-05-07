@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../TemplatePrincipal/PrincipalTemplate.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+
+    <ui:define name="content">
+        <h:form>
+            <p:panel header="Nuevo Repartidor">
+                <p:panelGrid columns="2" style="width: 100%">
+
+                    <h:outputLabel value="DUI"/>
+                    <p:inputText value="#{repartidorBeans.repartidorSeleccionado.dui}"
+                                 size="35" required="true"
+                                 style="width: 200px; margin-left: -4px" id="dui">
+                        <f:validateLength minimum="10" maximum="10"/>
+                    </p:inputText>
+
+                    <h:outputLabel value="NIT"/>
+                    <p:inputText value="#{repartidorBeans.repartidorSeleccionado.nit}"
+                                 size="35" required="true"
+                                 style="width: 200px; margin-left: -4px" id="nit">
+                        <f:validateLength minimum="15" maximum="15"/>
+                    </p:inputText>
+
+                    <h:outputLabel value="ISSS"/>
+                    <p:inputText value="#{repartidorBeans.repartidorSeleccionado.isss}"
+                                 size="35" required="true"
+                                 style="width: 200px; margin-left: -4px" id="isss">
+                        <f:validateLength minimum="15" maximum="20"/>
+                    </p:inputText>
+
+                    <h:outputLabel value="Nombre"/>
+                    <p:inputText value="#{repartidorBeans.repartidorSeleccionado.nombre}"
+                                 size="35" required="true"
+                                 style="width: 200px; margin-left: -4px" id="nombre">
+                        <f:validateLength minimum="10" maximum="20"/>
+                    </p:inputText>
+
+                    <h:outputLabel value="Apellido"/>
+                    <p:inputText value="#{repartidorBeans.repartidorSeleccionado.apellido}"
+                                 size="35" required="true"
+                                 style="width: 200px; margin-left: -4px" id="apellido">
+                        <f:validateLength minimum="10" maximum="25"/>
+                    </p:inputText>
+
+                    <h:outputLabel value="FECHA "/>
+                    <p:calendar id="Fechallegada" value="#{repartidorBeans.repartidorSeleccionado.fechacontrato}" 
+                                pattern="dd/MM/yyyy"/>
+
+                    <h:outputLabel value="Tipo de Contrato"/>
+                    <p:selectOneMenu value="#{repartidorBeans.repartidorSeleccionado.tipocontrato}">
+                        <f:selectItem itemLabel="Seleccione" itemValue=""/>
+                        <f:selectItem itemLabel="PERMANENTE" itemValue="Permanente"/>
+                        <f:selectItem itemLabel="TEMPORAL" itemValue="Temporal"/>
+                    </p:selectOneMenu>
+
+                    <h:outputLabel value="Direccion"/>
+                    <p:inputText value="#{repartidorBeans.repartidorSeleccionado.direccion}"
+                                 size="35" required="true"
+                                 style="width: 1080px; margin-left: -4px" id="direccion">
+                        <f:validateLength minimum="20" maximum="50"/>
+                    </p:inputText>
+
+                    <h:outputLabel value="Salario"/>
+                    <p:inputText value="#{repartidorBeans.repartidorSeleccionado.salario}"
+                                 size="35" required="true"
+                                 style="width: 200px; margin-left: -4px" id="salario">
+                        <f:validateLength minimum="4" maximum="6"/>
+
+                    </p:inputText>                               
+                    <h:outputLabel value="ESTADO"/>
+                    <p:selectOneMenu value="#{repartidorBeans.repartidorSeleccionado.estado}">
+                        <f:selectItem itemLabel="Seleccione" itemValue=""/>
+                        <f:selectItem itemLabel="Activo" itemValue="#{repartidorBeans.primero}"/>
+                        <f:selectItem itemLabel="Inactivo" itemValue="#{repartidorBeans.segundo}"/>
+                    </p:selectOneMenu>
+                </p:panelGrid>
+                <f:facet name="footer">
+                    <p:commandButton id="guardar"
+                                     value="Guardar"
+                                     icon="ui-icon-check" style="margin: 0" action="#{repartidorBeans.insertarRepartidor()}"/>
+                    <p:commandButton id="cancelar"
+                                     value="Cancelar"
+                                     icon="ui-icon-circle-close" style="margin: 0" action="TblRepartidor.xhtml"
+                                     process="@this">                            
+                    </p:commandButton>
+                </f:facet>
+
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+</ui:composition>
